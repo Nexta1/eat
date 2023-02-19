@@ -1,6 +1,5 @@
 package com.zhx.eat.entity;
 
-import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -22,13 +21,13 @@ import java.math.BigDecimal;
 @Data
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
-@ApiModel(value="OrderDetail对象", description="订单明细表")
+@ApiModel(value = "OrderDetail对象", description = "订单明细表")
 public class OrderDetail implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
     @ApiModelProperty(value = "主键")
-    @TableId(value = "id", type = IdType.ID_WORKER)
+    @TableId(value = "id")
     private Long id;
 
     @ApiModelProperty(value = "名字")

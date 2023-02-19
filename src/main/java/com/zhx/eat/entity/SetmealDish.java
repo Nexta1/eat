@@ -1,7 +1,6 @@
 package com.zhx.eat.entity;
 
 import com.baomidou.mybatisplus.annotation.FieldFill;
-import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.fasterxml.jackson.annotation.JsonFormat;
@@ -26,13 +25,13 @@ import java.util.Date;
 @Data
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
-@ApiModel(value="SetmealDish对象", description="套餐菜品关系")
+@ApiModel(value = "SetmealDish对象", description = "套餐菜品关系")
 public class SetmealDish implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
     @ApiModelProperty(value = "主键")
-    @TableId(value = "id", type = IdType.ID_WORKER)
+    @TableId(value = "id")
     private Long id;
 
     @ApiModelProperty(value = "套餐id ")
