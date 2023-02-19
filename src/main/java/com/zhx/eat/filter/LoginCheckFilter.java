@@ -1,6 +1,7 @@
 package com.zhx.eat.filter;
 
 import com.alibaba.fastjson.JSON;
+import com.zhx.eat.common.BaseContext;
 import com.zhx.eat.common.R;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.util.AntPathMatcher;
@@ -36,11 +37,14 @@ public class LoginCheckFilter implements Filter {
             return;
         }
         if (request.getSession().getAttribute("employee") != null) {
+
+            Long empId = (Long) request.getSession().getAttribute("employee");
+            BaseContext.setCurrentId(empId);
             filterChain.doFilter(servletRequest, servletResponse);
             return;
         }
         response.getWriter().write(JSON.toJSONString(R.error("NOTLOGIN")));
-        return;
+
     }
 
     // 匹配url

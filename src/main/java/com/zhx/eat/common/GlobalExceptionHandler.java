@@ -1,6 +1,5 @@
-package com.zhx.eat.config;
+package com.zhx.eat.common;
 
-import com.zhx.eat.common.R;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ControllerAdvice;

@@ -55,7 +55,8 @@ public class EmployeeController {
         }
         // 4. 返回用户信息，并保存到session中
         request.getSession().setAttribute("employee", emp.getId());
-        // 将数据写入到threadLocal中
+
+
         return R.success(emp);
     }
 
@@ -81,8 +82,8 @@ public class EmployeeController {
     @PutMapping
     public R<String> update(HttpServletRequest request, @RequestBody Employee employee) {
         Long emId = (Long) request.getSession().getAttribute("employee");
-        employee.setUpdateTime(LocalDateTime.now());
-        employee.setUpdateUser(emId);
+//        employee.setUpdateTime(LocalDateTime.now());
+//        employee.setUpdateUser(emId);
         employeeService.updateById(employee);
         return R.success("更新成功");
     }
@@ -96,7 +97,7 @@ public class EmployeeController {
         queryWrapper.like(StringUtils.isNotEmpty(name), Employee::getName, name);
         queryWrapper.orderByDesc(Employee::getUpdateTime);
         employeeService.page(pageInfo, queryWrapper);
-        
+
         return R.success(pageInfo);
     }
 
