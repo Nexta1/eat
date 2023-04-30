@@ -3,7 +3,6 @@ package com.zhx.eat.entity;
 import com.baomidou.mybatisplus.annotation.FieldFill;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
-import com.fasterxml.jackson.annotation.JsonFormat;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
@@ -11,7 +10,7 @@ import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.time.LocalDateTime;
 
 /**
  * <p>
@@ -42,15 +41,14 @@ public class Category implements Serializable {
     @ApiModelProperty(value = "顺序")
     private Integer sort;
 
-    @JsonFormat(pattern = "yyyy-MM-dd")
     @TableField(fill = FieldFill.INSERT)
     @ApiModelProperty(value = "创建时间")
-    private Date createTime;
+    private LocalDateTime createTime;
 
-    @JsonFormat(pattern = "yyyy-MM-dd")
+
     @TableField(fill = FieldFill.INSERT_UPDATE)
     @ApiModelProperty(value = "更新时间")
-    private Date updateTime;
+    private LocalDateTime updateTime;
 
     @TableField(fill = FieldFill.INSERT)
     @ApiModelProperty(value = "创建人")

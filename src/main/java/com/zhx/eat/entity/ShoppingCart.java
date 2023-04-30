@@ -11,7 +11,7 @@ import lombok.experimental.Accessors;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
-import java.util.Date;
+import java.time.LocalDateTime;
 
 /**
  * <p>
@@ -59,5 +59,5 @@ public class ShoppingCart implements Serializable {
 
     @TableField(fill = FieldFill.INSERT)
     @ApiModelProperty(value = "创建时间")
-    private Date createTime;
+    private LocalDateTime createTime;
 }

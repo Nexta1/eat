@@ -3,7 +3,6 @@ package com.zhx.eat.entity;
 import com.baomidou.mybatisplus.annotation.FieldFill;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
-import com.fasterxml.jackson.annotation.JsonFormat;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
@@ -12,7 +11,7 @@ import lombok.experimental.Accessors;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
-import java.util.Date;
+import java.time.LocalDateTime;
 
 /**
  * <p>
@@ -55,15 +54,15 @@ public class Setmeal implements Serializable {
     @ApiModelProperty(value = "图片")
     private String image;
 
-    @JsonFormat(pattern = "yyyy-MM-dd")
+
     @TableField(fill = FieldFill.INSERT)
     @ApiModelProperty(value = "创建时间")
-    private Date createTime;
+    private LocalDateTime createTime;
 
-    @JsonFormat(pattern = "yyyy-MM-dd")
+
     @TableField(fill = FieldFill.INSERT_UPDATE)
     @ApiModelProperty(value = "更新时间")
-    private Date updateTime;
+    private LocalDateTime updateTime;
 
     @TableField(fill = FieldFill.INSERT)
     @ApiModelProperty(value = "创建人")

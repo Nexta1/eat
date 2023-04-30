@@ -39,12 +39,13 @@ public class LoginCheckFilter implements Filter {
         if (request.getSession().getAttribute("employee") != null) {
 
             Long empId = (Long) request.getSession().getAttribute("employee");
+            log.info("{}", empId);
             BaseContext.setCurrentId(empId);
             filterChain.doFilter(servletRequest, servletResponse);
             return;
         }
         response.getWriter().write(JSON.toJSONString(R.error("NOTLOGIN")));
-
+     
     }
 
     // 匹配url

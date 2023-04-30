@@ -7,6 +7,9 @@ import org.springframework.stereotype.Component;
 
 import java.time.LocalDateTime;
 
+/**
+ * 元数据
+ */
 @Component
 @Slf4j
 public class MyMetaObjectHandler implements MetaObjectHandler {
@@ -14,11 +17,11 @@ public class MyMetaObjectHandler implements MetaObjectHandler {
 
     @Override
     public void insertFill(MetaObject metaObject) {
-        metaObject.setValue("createTime", LocalDateTime.now());
-        metaObject.setValue("updateTime", LocalDateTime.now());
-        metaObject.setValue("createUser", BaseContext.getCurrentId());
-        metaObject.setValue("updateUser", BaseContext.getCurrentId());
-
+        log.info("start insert fill ....");
+        this.setFieldValByName("createTime", LocalDateTime.now(), metaObject);
+        this.setFieldValByName("updateTime", LocalDateTime.now(), metaObject);
+        this.setFieldValByName("createUser", BaseContext.getCurrentId(), metaObject);
+        this.setFieldValByName("updateUser", BaseContext.getCurrentId(), metaObject);
     }
 
     @Override

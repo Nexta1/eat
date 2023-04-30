@@ -12,7 +12,6 @@ import org.springframework.util.DigestUtils;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
-import java.time.LocalDateTime;
 
 @Slf4j
 @RestController
@@ -56,7 +55,6 @@ public class EmployeeController {
         // 4. 返回用户信息，并保存到session中
         request.getSession().setAttribute("employee", emp.getId());
 
-
         return R.success(emp);
     }
 
@@ -70,20 +68,13 @@ public class EmployeeController {
     public R<String> save(HttpServletRequest request, @RequestBody Employee employee) {
         log.info("新增{}", employee.toString());
         employee.setPassword(DigestUtils.md5DigestAsHex("123456".getBytes()));
-        employee.setCreateTime(LocalDateTime.now());
-        employee.setUpdateTime(LocalDateTime.now());
-        Long empId = (Long) request.getSession().getAttribute("employee");
-        employee.setCreateUser(empId);
-        employee.setUpdateUser(empId);
         employeeService.save(employee);
         return R.success("新增员工成功");
     }
 
     @PutMapping
     public R<String> update(HttpServletRequest request, @RequestBody Employee employee) {
-        Long emId = (Long) request.getSession().getAttribute("employee");
-//        employee.setUpdateTime(LocalDateTime.now());
-//        employee.setUpdateUser(emId);
+
         employeeService.updateById(employee);
         return R.success("更新成功");
     }
@@ -93,9 +84,11 @@ public class EmployeeController {
     public R<Page> page(int page, int pageSize, String name) {
 
         Page pageInfo = new Page(page, pageSize);
-        LambdaQueryWrapper<Employee> queryWrapper = new LambdaQueryWrapper();
+        LambdaQueryWrapper<Employee> queryWrapper = new LambdaQueryWrapper<>();
         queryWrapper.like(StringUtils.isNotEmpty(name), Employee::getName, name);
+
         queryWrapper.orderByDesc(Employee::getUpdateTime);
+
         employeeService.page(pageInfo, queryWrapper);
 
         return R.success(pageInfo);

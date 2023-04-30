@@ -13,10 +13,16 @@ import java.sql.SQLIntegrityConstraintViolationException;
 @ResponseBody
 @Slf4j
 public class GlobalExceptionHandler {
+
     @ExceptionHandler(SQLIntegrityConstraintViolationException.class)
     public R<String> exceptionHandler(SQLIntegrityConstraintViolationException ex) {
         log.error(ex.getMessage());
         return R.error("失败了");
     }
 
+    @ExceptionHandler(value = CustomException.class)
+    public R<String> exceptionHandler(CustomException ex) {
+        ex.printStackTrace();
+        return R.error(ex.getMessage());
+    }
 }

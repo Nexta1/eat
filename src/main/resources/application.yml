@@ -12,6 +12,9 @@ spring:
       url: jdbc:mysql://localhost:3306/eat?serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&useSSL=false&allowPublicKeyRetrieval=true
       username: root
       password: 798868370
+  servlet:
+    multipart:
+      max-file-size: 200MB
 mybatis-plus:
   configuration:
     #在映射实体或者属性时，将数据库中表名和字段名中的下划线去掉，按照驼峰命名法映射
@@ -20,5 +23,10 @@ mybatis-plus:
 #  global-config:
 #    db-config:
 #      id-type: ID_WORKER
+
+
+zhx:
+  filePath: /Users/nexta1/Documents/java/eat/src/main/resources/files/
+
 
 
