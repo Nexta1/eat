@@ -9,10 +9,12 @@ import org.springframework.boot.web.servlet.ServletComponentScan;
 @SpringBootApplication
 @MapperScan("com.zhx.eat.mapper")
 @ServletComponentScan
+
 public class EatApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(EatApplication.class, args);
     }
+
 
 }

@@ -21,13 +21,13 @@ public class LoginCheckFilter implements Filter {
         HttpServletRequest request = (HttpServletRequest) servletRequest;
         HttpServletResponse response = (HttpServletResponse) servletResponse;
         log.info("拦截:{}", request.getRequestURI());
-        // 设置不要拦截的请求
+        // 设置不要拦截的请
         String[] urls = new String[]{
                 "/employee/login",
                 "/employee/layout",
                 "/backend/**",
                 "/front/**",
-                "/swagger-ui.html",
+                "/swagger-ui/**",
                 "/user/code",
                 "/user/login"
         };
@@ -45,7 +45,7 @@ public class LoginCheckFilter implements Filter {
             return;
         }
         response.getWriter().write(JSON.toJSONString(R.error("NOTLOGIN")));
-     
+
     }
 
     // 匹配url
